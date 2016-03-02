@@ -1,0 +1,13 @@
+---
+magento_n98magerun_path: /usr/local/bin/n98-magerun.phar
+magento_db_host: localhost
+magento_db_port: 3306
+magento_db_name: magento
+magento_db_prefix: ""
+magento_db_user: root
+magento_db_password: root
+magento_install_sample_data: "yes"
+magento_use_default_config_params: "yes"
+magento_version_by_name: magento-mirror-1.9.2.3
+magento_installation_folder: magento
+magento_base_url: http://magento.localdomain/
