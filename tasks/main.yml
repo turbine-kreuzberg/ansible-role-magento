@@ -1,19 +1,19 @@
 ---
 - name: install magento via n98-magerun
-  command: >
-    {{ magento_n98magerun_path }} install \
-    --dbHost={{ magento_db_host }} \
-    --dbPort={{ magento_db_port }} \
-    --dbUser={{ magento_db_user }} \
-    --dbPass={{ magento_db_password }} \
-    --dbName={{ magento_db_name }} \
-    --dbPrefix={{ magento_db_prefix }} \
-    --installSampleData={{ magento_install_sample_data }} \
-    --useDefaultConfigParams={{ magento_use_default_config_params }} \
-    --magentoVersionByName={{ magento_version_by_name }} \
-    --installationFolder={{ magento_installation_folder }} \
-    --baseUrl={{ magento_base_url }}
-    creates={{ magento_installation_folder }}/app/etc/local.xml
-  become: yes
-  become_method: sudo
-  become_user: www-data
+  command: "{{ magento_n98magerun_path }} install
+    --dbHost={{ magento_db_host }}
+    --dbPort={{ magento_db_port }}
+    --dbUser={{ magento_db_user }}
+    --dbPass={{ magento_db_password }}
+    --dbName={{ magento_db_name }}
+    --dbPrefix={{ magento_db_prefix }}
+    --installSampleData={{ magento_install_sample_data }}
+    --useDefaultConfigParams={{ magento_use_default_config_params }}
+    --magentoVersionByName={{ magento_version_by_name }}
+    --installationFolder={{ magento_installation_folder }}
+    --baseUrl={{ magento_base_url }}"
+  args:
+    creates: "{{ magento_installation_folder }}/app/etc/local.xml"
+
+- name: activate magento cron
+  cron: name="Magento install {{ magento_base_url }}" job="{{ magento_installation_folder }}/cron.sh > /dev/null"
