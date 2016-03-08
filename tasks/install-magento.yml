@@ -1,6 +1,6 @@
 ---
-- name: install magento via n98-magerun
-  command: "{{ magento_n98magerun_path }} install
+- name: install magento | install via n98-magerun
+  command: "{{ magento_magerun_binary_path }} install
     --dbHost={{ magento_db_host }}
     --dbPort={{ magento_db_port }}
     --dbUser={{ magento_db_user }}
@@ -10,10 +10,16 @@
     --installSampleData={{ magento_install_sample_data }}
     --useDefaultConfigParams={{ magento_use_default_config_params }}
     --magentoVersionByName={{ magento_version_by_name }}
-    --installationFolder={{ magento_installation_folder }}
+    --installationFolder={{ magento_install_path }}
     --baseUrl={{ magento_base_url }}"
   args:
-    creates: "{{ magento_installation_folder }}/app/etc/local.xml"
+    creates: "{{ magento_install_path }}/app/etc/local.xml"
 
-- name: activate magento cron
-  cron: name="Magento install {{ magento_base_url }}" job="{{ magento_installation_folder }}/cron.sh > /dev/null"
+- name: install magento | create admin users
+  command: "{{ magento_magerun_binary_path }} admin:user:create {{ item.username }} {{ item.email }} {{ item.password }} {{ item.firstname }} {{ item.lastname }} {{ item.role }}"
+  args:
+    chdir: "{{ magento_install_path }}"
+  with_items: "{{ magento_admin_users }}"
+
+- name: install magento | activate magento cron
+  cron: name="Magento install {{ magento_base_url }}" job="{{ magento_install_path }}/cron.sh > /dev/null"

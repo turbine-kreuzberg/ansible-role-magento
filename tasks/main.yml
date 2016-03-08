@@ -2,3 +2,5 @@
 - include: install-magerun.yml
 
 - include: install-magento.yml
+
+- include: install-extensions.yml

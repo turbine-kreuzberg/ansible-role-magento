@@ -1,0 +1,12 @@
+---
+- name: install extensions | Magento Connect extensions
+  command: "{{ magento_magerun_binary_path }} extension:install {{ item }}"
+  args:
+    chdir: "{{ magento_install_path }}"
+    creates: "{{ magento_install_path }}/app/etc/modules/{{ item }}.xml"
+  with_items: "{{ magento_extensions_connect }}"
+
+- name: install extensions | clear all caches
+  shell: magerun cache:clean && magerun cache:flush && magerun cache:dir:flush
+  args:
+    chdir: "{{ magento_install_path }}"

@@ -1,5 +1,4 @@
 ---
-magento_n98magerun_path: /usr/local/bin/n98-magerun.phar
 magento_db_host: localhost
 magento_db_port: 3306
 magento_db_name: magento
@@ -9,10 +8,13 @@ magento_db_password: root
 magento_install_sample_data: "yes"
 magento_use_default_config_params: "yes"
 magento_version_by_name: magento-mirror-1.9.2.3
-magento_installation_folder: magento
+magento_install_path: magento
 magento_base_url: http://magento.dev/
 magento_magerun_binary_url: "http://files.magerun.net/n98-magerun-latest.phar"
 magento_magerun_binary_path: "~/bin/magerun"
+magento_admin_user: "admin"
+magento_admin_password: "password"
+magento_delete_default_admin: false
 
 # modules being available via Magento Connect
 magento_extensions_connect: []
@@ -20,4 +22,7 @@ magento_extensions_connect: []
 magento_extensions_zip: []
 # modules being available as composer packages
 magento_extensions_composer: []
+
+# additional admin users to create
+magento_admin_users: []
 
