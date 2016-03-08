@@ -10,4 +10,14 @@ magento_install_sample_data: "yes"
 magento_use_default_config_params: "yes"
 magento_version_by_name: magento-mirror-1.9.2.3
 magento_installation_folder: magento
-magento_base_url: http://magento.localdomain/
+magento_base_url: http://magento.dev/
+magento_magerun_binary_url: "http://files.magerun.net/n98-magerun-latest.phar"
+magento_magerun_binary_path: "~/bin/magerun"
+
+# modules being available via Magento Connect
+magento_extensions_connect: []
+# modules being available as zip files
+magento_extensions_zip: []
+# modules being available as composer packages
+magento_extensions_composer: []
+

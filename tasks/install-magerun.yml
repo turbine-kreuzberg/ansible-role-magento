@@ -1,0 +1,12 @@
+---
+- name: check if n98-magerun is already installed
+  stat: path={{ magento_magerun_binary_path }}
+  register: magerun
+
+- name: get magerun binary
+  get_url: url={{ magento_magerun_binary_url }} dest={{ magento_magerun_binary_path }}
+  when: not magerun.stat.exists
+
+- name: ensure magerun is executable
+  file: path={{ magento_magerun_binary_path }} mode="ugo+x"
+
