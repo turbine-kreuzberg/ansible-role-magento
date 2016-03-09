@@ -8,7 +8,7 @@ magento_db_password: root
 magento_install_sample_data: "yes"
 magento_use_default_config_params: "yes"
 magento_version_by_name: magento-mirror-1.9.2.3
-magento_install_path: magento
+magento_install_path: "/var/www/magento"
 magento_base_url: http://magento.dev/
 magento_magerun_binary_url: "http://files.magerun.net/n98-magerun-latest.phar"
 magento_magerun_binary_path: "~/bin/magerun"
